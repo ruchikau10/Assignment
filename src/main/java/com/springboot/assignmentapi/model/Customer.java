@@ -8,49 +8,17 @@ public class Customer {
 
     private String customerEmail;
 
-    private Integer customerPhoneNo;
+    private String customerPhoneNo;
 
     private String  customerName;
 
     private String requestId;
 
-    public Customer(String customerName, String customerEmail, Integer customePhoneNo, String checkoutId, String requestId) {
-        this.customerName = customerName;
-        this.customerEmail = customerEmail;
-        this.customerPhoneNo = customePhoneNo;
+    public Customer(String checkoutId, String customerEmail, String customerPhoneNo, String customerName, String requestId) {
         this.checkoutId = checkoutId;
-        this.requestId = requestId;
-    }
-
-    public Integer getCustomerPhoneNo() {
-        return customerPhoneNo;
-    }
-
-    public void setCustomerPhoneNo(Integer customePhoneNo) {
-        this.customerPhoneNo = customePhoneNo;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
-    public String getCustomerEmail() {
-        return customerEmail;
-    }
-
-    public void setCustomerEmail(String customerEmail) {
         this.customerEmail = customerEmail;
-    }
-
-    public String getRequestId() {
-        return requestId;
-    }
-
-    public void setRequestId(String requestId) {
+        this.customerPhoneNo = customerPhoneNo;
+        this.customerName = customerName;
         this.requestId = requestId;
     }
 
@@ -62,4 +30,35 @@ public class Customer {
         this.checkoutId = checkoutId;
     }
 
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
+    }
+
+    public String getCustomerPhoneNo() {
+        return customerPhoneNo;
+    }
+
+    public void setCustomerPhoneNo(String customerPhoneNo) {
+        this.customerPhoneNo = customerPhoneNo;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
+    }
 }
