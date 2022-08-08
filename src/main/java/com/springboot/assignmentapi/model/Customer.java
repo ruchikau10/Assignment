@@ -4,13 +4,13 @@ import org.springframework.data.annotation.Id;
 
 public class Customer {
     @Id
-    private String customerName;
+    private String checkoutId;
 
     private String customerEmail;
 
     private Integer customerPhoneNo;
 
-    private String checkoutId;
+    private String  customerName;
 
     private String requestId;
 

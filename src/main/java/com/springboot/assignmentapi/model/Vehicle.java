@@ -4,13 +4,13 @@ import org.springframework.data.annotation.Id;
 
 public class Vehicle {
     @Id
-    private String vertical;
+    private String requestId;
 
     private String verticalmake;
 
     private String verticalmodel;
 
-    private String requestId;
+    private String vertical;
 
     public Vehicle(String vertical, String verticalmake, String verticalmodel, String requestId) {
         this.vertical = vertical;
