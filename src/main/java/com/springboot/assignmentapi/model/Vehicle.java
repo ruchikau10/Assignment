@@ -1,22 +1,32 @@
 package com.springboot.assignmentapi.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "TW/FW Request")
 
 public class Vehicle {
-    @Id
+    @Id  //works as primary key
+    private String id;
+    private String vertical;
+    private String vehiclemake;
+    private String vehiclemodel;
     private String requestId;
 
-    private String verticalmake;
-
-    private String verticalmodel;
-
-    private String vertical;
-
-    public Vehicle(String vertical, String verticalmake, String verticalmodel, String requestId) {
+    public Vehicle(String id, String vertical, String vehiclemake, String vehiclemodel, String requestId) {
+        this.id = id;
         this.vertical = vertical;
-        this.verticalmake = verticalmake;
-        this.verticalmodel = verticalmodel;
+        this.vehiclemake = vehiclemake;
+        this.vehiclemodel = vehiclemodel;
         this.requestId = requestId;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getVertical() {
@@ -27,20 +37,20 @@ public class Vehicle {
         this.vertical = vertical;
     }
 
-    public String getVerticalmake() {
-        return verticalmake;
+    public String getVehiclemake() {
+        return vehiclemake;
     }
 
-    public void setVerticalmake(String verticalmake) {
-        this.verticalmake = verticalmake;
+    public void setVehiclemake(String vehiclemake) {
+        this.vehiclemake = vehiclemake;
     }
 
-    public String getVerticalmodel() {
-        return verticalmodel;
+    public String getVehiclemodel() {
+        return vehiclemodel;
     }
 
-    public void setVerticalmodel(String verticalmodel) {
-        this.verticalmodel = verticalmodel;
+    public void setVehiclemodel(String vehiclemodel) {
+        this.vehiclemodel = vehiclemodel;
     }
 
     public String getRequestId() {

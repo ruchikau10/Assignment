@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class CustomerServiceImplem implements CustomerService{
@@ -23,4 +24,30 @@ public class CustomerServiceImplem implements CustomerService{
     public List<Customer> getCustomers(){
         return customerRepo.findAll();
     }
+
+    @Override
+    public void deleteCustomer(String checkoutId){
+        Customer customer = customerRepo.findbyCustomerById(checkoutId);
+        customerRepo.delete(customer);
+    }
+
+    @Override
+    public Customer updateCustomer(Customer customer, String checkoutId) {
+        Customer customer1= customerRepo.findById(Integer.valueOf(checkoutId)).get();
+
+        if(Objects.nonNull(customer.getCustomerName())&& !"".equalsIgnoreCase(customer.getCustomerName())){
+            customer1.setCustomerName(customer.getCustomerName());
+        }
+
+        if(Objects.nonNull(customer.getCustomerEmail())&& !"".equalsIgnoreCase(customer.getCustomerEmail())){
+            customer1.setCustomerEmail(customer.getCustomerEmail());
+        }
+
+        if(Objects.nonNull(customer.getCustomerPhoneNo())&& !"".equalsIgnoreCase(customer.getCustomerPhoneNo())){
+            customer1.setCustomerPhoneNo(customer.getCustomerPhoneNo());
+        }
+        return customerRepo.save(customer1);
+    }
+
+
 }
