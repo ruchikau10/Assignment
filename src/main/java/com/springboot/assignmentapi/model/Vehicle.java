@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "TW/FW Request")
 
 public class Vehicle {
-    @Id  //works as primary key
+    @Id
     private String id;
     private String vertical;
     private String vehiclemake;

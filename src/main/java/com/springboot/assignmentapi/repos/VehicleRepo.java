@@ -6,6 +6,6 @@ import org.springframework.data.mongodb.repository.Query;
 
 public interface VehicleRepo extends MongoRepository<Vehicle,String> {
 
-  // @Query("{requestId: ?0")
+   @Query("{requestId: ?0")
    Vehicle findByRequestId(String requestId);
 }
