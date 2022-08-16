@@ -1,7 +1,9 @@
 package com.springboot.assignmentapi.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "Checkout")
 public class Customer {
     @Id
     private String checkoutId;
@@ -10,16 +12,19 @@ public class Customer {
 
     private String customerPhoneNo;
 
-    private String  customerName;
+    private String customerName;
 
     private String requestId;
 
-    public Customer(String checkoutId, String customerEmail, String customerPhoneNo, String customerName, String requestId) {
+    private String resultId;
+
+    public Customer(String checkoutId, String customerEmail, String customerPhoneNo, String customerName, String requestId, String resultId) {
         this.checkoutId = checkoutId;
         this.customerEmail = customerEmail;
         this.customerPhoneNo = customerPhoneNo;
         this.customerName = customerName;
         this.requestId = requestId;
+        this.resultId = resultId;
     }
 
     public String getCheckoutId() {
@@ -60,5 +65,13 @@ public class Customer {
 
     public void setRequestId(String requestId) {
         this.requestId = requestId;
+    }
+
+    public String getResultId() {
+        return resultId;
+    }
+
+    public void setResultId(String resultId) {
+        this.resultId = resultId;
     }
 }

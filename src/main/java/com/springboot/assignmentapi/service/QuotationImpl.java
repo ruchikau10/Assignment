@@ -23,28 +23,34 @@ public class QuotationImpl implements  QuotationService{
 
     @Override
     public String addQuotation(Quotation quotation) {
-        Random random = new Random();
-        String requestId = String.valueOf(Math.abs(random.nextLong()));
-        quotation.getRequestId();
+        String requestId;
+        while(true){
+            Random random = new Random();
+            requestId = String.valueOf(Math.abs(random.nextLong()));
+            if(quotationRepo.findQuotationByRequestId(requestId)==null){
+                break;
+            }
+        }
+        quotation.setRequestId(requestId);
         quotationRepo.save(quotation);
-        return requestId;
+        return  quotation.getRequestId();
     }
 
     @Override
-    public Quotation getOneQuotation(String requestId) {
-        return quotationRepo.findQuotationById(requestId);
+    public List<Quotation> getOneQuotation(String requestId) {
+        return quotationRepo.findAllQuotationByRequestId(requestId);
     }
 
     @Override
     public void deleteQuotation(String requestId){
-        Quotation quotation = quotationRepo.findQuotationById(requestId);
+        Quotation quotation = quotationRepo.findQuotationByRequestId(requestId);
         quotationRepo.delete(quotation);
     }
 
     @Override
     public Quotation updateQuotation(String requestId, Quotation quotation) {
 
-        Quotation quotation1 =quotationRepo.findQuotationById(requestId);
+        Quotation quotation1 =quotationRepo.findQuotationByRequestId(requestId);
 
         if(Objects.nonNull(quotation.getRequestId())&&"".equalsIgnoreCase(quotation.getRequestId())){
             quotation1.setRequestId(quotation.getRequestId());

@@ -15,6 +15,7 @@ public class QuotationController {
 
     @GetMapping("/api/get/quotation")
     public List<Quotation> getQuotation(){
+
         return quotationService.getQuotation();
     }
 
@@ -25,7 +26,7 @@ public class QuotationController {
     }
 
     @GetMapping("/api/get/quotation/{requestId}")
-    public Quotation getOneQuotation(@PathVariable String requestId){
+    public List<Quotation> getOneQuotation(@PathVariable String requestId){
         return quotationService.getOneQuotation(requestId);
     }
 
@@ -34,7 +35,6 @@ public class QuotationController {
         return quotationService.updateQuotation(requestId, quotation);
     }
 
-    //delete quotation
     @DeleteMapping("/api/delete/quotation/{requestId}")
     public void deleteQuotation(@PathVariable String requestId){
         quotationService.deleteQuotation(requestId);

@@ -4,13 +4,14 @@ import org.springframework.data.annotation.Id;
 
 public class SupportedInsurers {
 
-    private String insurer_name;
+    public String insurer_name;
 
-    private int premium_amt;
+    public int premium_amt;
 
-    public SupportedInsurers(String insurer_id, String insurer_name, int premium_amt) {
+    public SupportedInsurers(String insurer_name, int premium_amt) {
         this.insurer_name = insurer_name;
         this.premium_amt = premium_amt;
+
     }
 
     public String getInsurer_name() {

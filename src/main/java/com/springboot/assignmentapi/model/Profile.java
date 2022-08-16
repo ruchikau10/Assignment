@@ -2,7 +2,7 @@ package com.springboot.assignmentapi.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "TW/FW Response")
+@Document(collection = "Response")
 
 public class Profile {
 
@@ -11,6 +11,9 @@ public class Profile {
     private String resultId;
 
     private SupportedInsurers supportedInsurers;
+
+    public Profile() {
+    }
 
     public Profile(String requestId, String resultId, SupportedInsurers supportedInsurers) {
         this.requestId = requestId;

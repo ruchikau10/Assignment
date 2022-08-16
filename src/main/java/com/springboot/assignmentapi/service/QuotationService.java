@@ -10,7 +10,7 @@ public interface QuotationService {
 
     String addQuotation(Quotation quotation);
 
-    Quotation getOneQuotation(String requestId);
+    List<Quotation> getOneQuotation(String requestId);
 
     void deleteQuotation(String requestId);
 

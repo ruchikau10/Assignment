@@ -3,10 +3,10 @@ package com.springboot.assignmentapi.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "Quotation")
+@Document(collection = "Quotation1")
 
 public class Quotation {
-    @Id
+
     private String requestId;
 
     private String vertical;

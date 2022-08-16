@@ -8,7 +8,5 @@ import java.util.List;
 
 public interface ProfileRepo extends MongoRepository<Profile,String> {
 
-    @Query("{requestId}:?0")
-    List<Profile> findByRequestId(String requestId);
-
+    List<Profile> findAllByRequestId(String requestId);
 }

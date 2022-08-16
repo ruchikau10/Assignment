@@ -1,5 +1,6 @@
 package com.springboot.assignmentapi.service;
 
+import com.springboot.assignmentapi.model.Profile;
 import com.springboot.assignmentapi.model.Vehicle;
 import com.springboot.assignmentapi.repos.VehicleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,10 @@ public class VehicleServiceImplem implements VehicleService{
     @Autowired
     public VehicleRepo vehicleRepo;
 
+    @Autowired
+    public ProfileService profileService;
+
+
    @Override
     public List<Vehicle> getVehicle(){
        return vehicleRepo.findAll();
@@ -23,7 +28,8 @@ public class VehicleServiceImplem implements VehicleService{
 
     @Override
     public Vehicle getVehicleByRequestid(String requestId) {
-        return vehicleRepo.findByRequestId(requestId);
+
+       return vehicleRepo.findByRequestId(requestId);
     }
 
     @Override
@@ -32,6 +38,7 @@ public class VehicleServiceImplem implements VehicleService{
        String requestId = String.valueOf(Math.abs(random.nextLong()));
        vehicle.setRequestId(requestId);
        vehicleRepo.save(vehicle);
+        profileService.generateProfile(requestId);
        return requestId;
    }
 

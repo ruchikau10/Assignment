@@ -3,7 +3,7 @@ package com.springboot.assignmentapi.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "TW/FW Request")
+@Document(collection = "Request")
 
 public class Vehicle {
     @Id
