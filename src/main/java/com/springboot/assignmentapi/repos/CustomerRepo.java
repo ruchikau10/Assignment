@@ -8,6 +8,6 @@ import org.springframework.data.mongodb.repository.Query;
 public interface CustomerRepo extends MongoRepository<Customer,Integer>{
 
     @Query("{checkoutId:?0}")
-    Customer findbyCustomerById(String checkoutId);
+    Customer findCustomerById(String checkoutId);
 
 }

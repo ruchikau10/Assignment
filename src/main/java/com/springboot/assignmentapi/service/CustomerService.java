@@ -12,4 +12,6 @@ public interface CustomerService {
     void deleteCustomer(String checkoutId);
 
     Customer updateCustomer(Customer customer, String checkoutid);
+
+    Customer getIndividualCustomer(String checkoutId);
 }

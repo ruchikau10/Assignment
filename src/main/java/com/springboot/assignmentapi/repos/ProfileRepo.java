@@ -9,4 +9,6 @@ import java.util.List;
 public interface ProfileRepo extends MongoRepository<Profile,String> {
 
     List<Profile> findAllByRequestId(String requestId);
+
+    Profile findProfileByResultId(String resultId);
 }

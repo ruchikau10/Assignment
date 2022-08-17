@@ -38,7 +38,7 @@ public class VehicleServiceImplem implements VehicleService{
        String requestId = String.valueOf(Math.abs(random.nextLong()));
        vehicle.setRequestId(requestId);
        vehicleRepo.save(vehicle);
-        profileService.generateProfile(requestId);
+       profileService.generateProfile(requestId);
        return requestId;
    }
 
