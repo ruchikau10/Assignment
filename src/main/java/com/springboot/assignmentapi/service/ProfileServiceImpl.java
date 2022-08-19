@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class ProfileServiceImpl implements ProfileService {
@@ -20,6 +21,7 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Autowired
     public QuotationRepo quotationRepo;
+
     @Autowired
     public VehicleRepo vehicleRepo;
 
@@ -29,37 +31,44 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public void generateProfile(String requestId) {
-        Vehicle vehicle = vehicleRepo.findByRequestId(requestId);
-        String updateMake = vehicle.getVehiclemake();
-        String updateModel = vehicle.getVehiclemodel();
-        List<Quotation> quotationList = new ArrayList<>
-                (quotationRepo.findQuotationswithmakeandmodel(updateMake,updateModel));
+    public void generateProfile(Vehicle vehicle) {
+    //  Vehicle vehicle = vehicleRepo.findByRequestId(requestId);
 
-        Profile profile= new Profile();
-        for(int i=0;i<quotationList.size();i++){
-            profile.setRequestId(requestId);   //make and model of vehicle
+        String vertical = vehicle.getVertical();
+        String make= vehicle.getVehiclemake();
+        String model = vehicle.getVehiclemodel();
+//        List<Quotation> quotationList = new ArrayList<>
+//                (quotationRepo.findAllQuotationByVerticalAndMakeAndModel(vertical,make,model));
+        List<Quotation> quotationList = new ArrayList<>();
+        quotationList = quotationRepo.findAllByMakeAndModel(make,model);
+
+          Profile profile= new Profile();
+          for(int i=0;i<quotationList.size();i++){
+            profile.setRequestId(vehicle.getRequestId());
             profile.setSupportedInsurers(quotationList.get(i).getSupportedInsurers());
             profile.setResultId(quotationList.get(i).getRequestId());
             profileRepo.save(profile);
         }
     }
 
-    @Override
-    public void generateProfile1(String requestId) {
-        // comment
-        Vehicle vehicle = vehicleRepo.findByRequestId(requestId);
-        String updateMake = vehicle.getVehiclemake();
-        String updateModel = vehicle.getVehiclemodel();
-        List<Quotation> quotationList = new ArrayList<>
-                (quotationRepo.findQuotationswithmakeandmodel(updateMake,updateModel));
+//    @Override
+//        Random random = new Random();
+//        String resultId = String.valueOf(Math.abs(random.nextLong()))
+    //     profile.setResultId(resultId);
+//    public void generateProfile1(String requestId) {
+//        // comment
+//        Vehicle vehicle = vehicleRepo.findByRequestId(requestId);
+//        String updateMake = vehicle.getVehiclemake();
+//        String updateModel = vehicle.getVehiclemodel();
+//        List<Quotation> quotationList = new ArrayList<>
+//                (quotationRepo.findQuotationswithmakeandmodel(updateMake,updateModel));
 
-        Profile profile= new Profile();
-        for(int i=0;i<=quotationList.size();i++){
-            profile.setRequestId(requestId);   //make and model of vehicle
-            profile.setSupportedInsurers(quotationList.get(i).getSupportedInsurers());
-            profile.setResultId(quotationList.get(i).getRequestId());
-            profileRepo.save(profile);
-        }
-    }
+//        Profile profile= new Profile();
+//        for(int i=0;i<=quotationList.size();i++){
+//            profile.setRequestId(requestId);   //make and model of vehicle
+//            profile.setSupportedInsurers(quotationList.get(i).getSupportedInsurers());
+//            profile.setResultId(quotationList.get(i).getRequestId());
+//            profileRepo.save(profile);
+//        }
+//    }
 }

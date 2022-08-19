@@ -3,7 +3,7 @@ package com.springboot.assignmentapi.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "Quotation1")
+@Document(collection = "Quotation")
 
 public class Quotation {
 
@@ -26,8 +26,9 @@ public class Quotation {
         this.supportedInsurers = supportedInsurers;
     }
 
+
     public String getRequestId() {
-        return this.requestId;
+        return requestId;
     }
 
     public void setRequestId(String requestId) {

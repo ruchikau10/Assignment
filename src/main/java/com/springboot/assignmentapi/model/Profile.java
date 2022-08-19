@@ -1,5 +1,6 @@
 package com.springboot.assignmentapi.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Response")
@@ -8,6 +9,7 @@ public class Profile {
 
     private String requestId;
 
+    @Id
     private String resultId;
 
     private SupportedInsurers supportedInsurers;
@@ -29,7 +31,7 @@ public class Profile {
         this.requestId = requestId;
     }
 
-    public String getResultId() {
+    public String getResultId(String requestId) {
         return resultId;
     }
 
